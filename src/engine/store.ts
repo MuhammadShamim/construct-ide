@@ -32,13 +32,24 @@ const initialNodes: Node<ConstructNodeData>[] = [
     id: '1',
     type: 'variable', 
     position: { x: 100, y: 100 },
-    data: { label: 'Data: Hello World', value: 'Hello World', type: 'string', isInput: true },
+    data: { 
+      label: 'Data: Hello World', 
+      value: 'Hello World', 
+      type: 'string',     // <--- ADD THIS LINE (Engine needs it)
+      inputs: [],
+      outputs: [{ id: 'out_1', type: 'string', label: 'Value' }] 
+    },
   },
   {
     id: '2',
     type: 'logger',
     position: { x: 500, y: 100 },
-    data: { label: 'Logger (Console)', type: 'log' },
+    data: { 
+      label: 'Logger (Console)', 
+      type: 'log',        // <--- ADD THIS LINE (Engine looks for this!)
+      inputs: [{ id: 'in_1', type: 'any', connected: false, label: 'Message' }],
+      outputs: [] 
+    },
   },
 ];
 
